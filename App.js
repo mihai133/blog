@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
+import React from 'react'
+import { createStackNavigator} from '@react-navigation/stack';
+import IndexScreen from './src/screens/indexScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from './src/context/BlogContext';
+import ShowScreen from './src/screens/ShowScreen';
+import CreateScreen from './src/screens/CreateScreen';
+import { Feather } from '@expo/vector-icons'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createStackNavigator()
+
+const App = () => {
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{
+            title:'Blogs ', 
+           
+            }} 
+            name="IndexScreen" 
+            component={IndexScreen} />
+        <Stack.Screen options={{title:'Show Screen '}} name="ShowScreen" component={ShowScreen} />
+        <Stack.Screen 
+          options={{title:'Create Screen' }} 
+          name="CreateScreen" 
+          component={CreateScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default () =>{
+  return <Provider>
+    <App />
+    </Provider> 
+}
