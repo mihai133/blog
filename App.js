@@ -16,7 +16,9 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen options={{
             title:'Blogs ', 
-           
+            // headerRight: () =>(
+            //     <Feather name='plus' size={30} paddingRight={15} />
+            //   ),
             }} 
             name="IndexScreen" 
             component={IndexScreen} />
